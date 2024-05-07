@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<from action="/testPost.do" method="POST">
+		<input type="test" name="name">
+		<button type="submit">전송</button>
+	</from>
+
+</body>
+</html>
