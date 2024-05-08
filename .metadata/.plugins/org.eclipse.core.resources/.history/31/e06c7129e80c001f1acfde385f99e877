@@ -1,0 +1,20 @@
+package kr.co.green.member.model.dao;
+
+import java.sql.Connection;
+
+import kr.co.green.common.DatabaseConnection;
+import kr.co.green.member.model.dto.Member;
+
+public class MemberDAO {
+	private Connection con;
+	private DatabaseConnection dc;
+	
+	public MemberDAO() {
+		
+	}
+	
+	public int register(Member member) {
+		
+	}
+	
+}

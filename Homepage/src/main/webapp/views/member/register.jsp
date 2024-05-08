@@ -14,7 +14,7 @@
    <section>
     <div class="signup-form">
         <h2>회원가입</h2>
-        <form>
+        <form action="/member/register.do" method="POST">
           <div class="input-container">
         </div>
         <div class="input-container">
@@ -41,6 +41,6 @@
       </div>
   </section>
 
-    <%@ include file=/views/common/footer.jsp %>
+    <%@ include file="/views/common/footer.jsp" %>
 </body>
 </html>

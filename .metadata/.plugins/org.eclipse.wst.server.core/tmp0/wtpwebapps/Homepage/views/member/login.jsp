@@ -14,9 +14,9 @@
   <section>
     <div class="login-form">
         <h2>로그인</h2>
-        <form>
+        <form action="/member/login.do" method="POST">
           <label for="username">아이디:</label>
-          <input type="text" id="username" name="username" required>
+          <input type="text" id="userid" name="userid" required>
   
           <label for="password">비밀번호:</label>
           <input type="password" id="password" name="password" required>
@@ -26,6 +26,6 @@
       </div>
   </section>
 
-    <%@ include file=/views/common/footer.jsp %>
+    <%@ include file="/views/common/footer.jsp" %>
 </body>
 </html>

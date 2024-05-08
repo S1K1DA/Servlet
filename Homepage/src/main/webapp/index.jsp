@@ -13,7 +13,14 @@
 
   <section>
     <h2>홈</h2>
-    <p>안녕하세요! 홈페이지에 오신 것을 환영합니다.</p>
+    <c:choose>
+    	<c:when test="${sessionScope.userName == null}">
+    		<p>비회원님 안녕하세요! 홈페이지에 오신것을 환영합니다.</p>
+    	</c:when>
+    	<c:otherwise>
+    		<p>${sessionScope.userName}님 안녕하세요! 홈페이지에 오신것을 환영합니다.</p>
+    	</c:otherwise>
+    </c:choose>
   </section>
 
     <%@ include file="views/common/footer.jsp" %>
