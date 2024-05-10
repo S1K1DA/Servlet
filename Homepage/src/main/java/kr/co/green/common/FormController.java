@@ -28,6 +28,8 @@ public class FormController extends HttpServlet {
 			nextPage = "/views/member/register.jsp";
 		} else if (action.equals("/loginForm.do")) {
 			nextPage = "/views/member/login.jsp";
+		} else if (action.equals("/enrollForm.do")) {
+			nextPage = "/views/board/free/freeEnroll.jsp";
 		}
 
 		if (nextPage != null && !nextPage.isEmpty()) {
