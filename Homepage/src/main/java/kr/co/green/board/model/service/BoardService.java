@@ -15,9 +15,18 @@ public interface BoardService {
 
 //	글등록
 	public int enroll(FreeDtoImpl freeDto);
+	
+//	상세보기
+	public FreeDtoImpl getDetail(int boardNo);
+
+//	글수정폼
+	public FreeDtoImpl getEditForm(int boardNo);
 
 //	글수정
+	public int setEdit(FreeDtoImpl freeDto);
 
+	
 //	글삭제
+	public int setDelete(int boardNo);
 
 }

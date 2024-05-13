@@ -92,4 +92,14 @@ public class BoardDto {
 		this.memberName = memberName;
 	}
 
+	@Override
+	public String toString() {
+		return "BoardDto [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
+				+ ", boardViews=" + boardViews + ", boardIndate=" + boardIndate + ", boardUpdate=" + boardUpdate
+				+ ", boardDelete=" + boardDelete + ", boardDeleteStatus=" + boardDeleteStatus + ", memberNo=" + memberNo
+				+ ", memberName=" + memberName + "]";
+	}
+	
+	
+
 }

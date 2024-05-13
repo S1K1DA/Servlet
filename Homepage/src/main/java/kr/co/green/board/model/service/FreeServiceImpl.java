@@ -30,5 +30,42 @@ public class FreeServiceImpl implements BoardService{
 		return freeDao.enroll(freeDto);
 	}
 
+	@Override
+	public FreeDtoImpl getDetail(int boardNo) {
+		// 게시글 상세보기를 가져오면서 필요한 작업
+		
+		// 1. 게시글 정보 조회
+		FreeDtoImpl result = freeDao.getDetail(boardNo);
+		
+		// 2. 작성자 조회
+		freeDao.getWriter(result);
+		
+		// 3. 조회수 1 증가
+		int resultView = freeDao.setViews(result.getBoardNo());
+		
+		if(resultView == 1) {
+			return result;
+		}
+		return null;
+		
+	}
+	
+	@Override
+	public FreeDtoImpl getEditForm(int boardNo) {
+		FreeDtoImpl result = freeDao.getDetail(boardNo);
+		freeDao.getWriter(result);
+		
+		return result;
+	}
+	
+	@Override
+	public int setEdit(FreeDtoImpl freeDto) {
+		return freeDao.setEdit(freeDto);
+	}
+	
+	@Override
+	public int setDelete(int boardNo) {
+		return freeDao.setDelete(boardNo);
+	}
 
 }
