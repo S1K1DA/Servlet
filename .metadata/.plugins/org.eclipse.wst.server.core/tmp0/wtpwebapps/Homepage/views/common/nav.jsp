@@ -13,5 +13,15 @@
 					게시판</a>
 			</div></li>
 		<li><a href="/form/contactEnroll.do">연락하기</a></li>
+		
+		<c:if test="${sessionScope.userType == 'admin'}">
+		<li class="menu-item">
+			<a href="#">관리자 메뉴</a>
+			<div class="submenu">
+			<a href="/contact/list.do?cpage=1">연락 내역</a>
+			</div></li>
+		</c:if>
+		
+		
 	</ul>
 </nav>

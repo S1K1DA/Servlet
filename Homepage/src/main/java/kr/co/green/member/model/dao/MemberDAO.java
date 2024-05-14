@@ -39,7 +39,7 @@ public class MemberDAO {
 	}
 	
 	public Member login(Member member) {
-		String query = "SELECT M_NO, M_NAME FROM MEMBER"
+		String query = "SELECT M_NO, M_NAME, M_TYPE FROM MEMBER"
 				+ "     WHERE M_ID = ?"
 				+ "     AND M_PWD = ?";
 		Member result = new Member();
@@ -53,10 +53,12 @@ public class MemberDAO {
 			
 			while(rs.next()) {
 				int userNo = rs.getInt("M_NO");
-				String userName =  rs.getString("M_NAME");
+				String userName = rs.getString("M_NAME");
+				String userType = rs.getString("M_TYPE");
 				
 				result.setUserNo(userNo);
 				result.setUserName(userName);
+				result.setUserType(userType);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

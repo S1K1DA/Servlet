@@ -24,6 +24,8 @@ public class ContactEnrollController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		// 이름, 이메일, 메세지
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
@@ -38,6 +40,10 @@ public class ContactEnrollController extends HttpServlet {
 		// 서비스 호출
 		ContactServiceImpl contactService = new ContactServiceImpl();
 		int result = contactService.enroll(contactDto);
+		
+		if(result == 1) {
+			response.sendRedirect("/");
+		}
 		
 		
 		

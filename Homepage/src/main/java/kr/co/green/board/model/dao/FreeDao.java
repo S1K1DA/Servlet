@@ -22,9 +22,11 @@ public class FreeDao {
 
 	public ArrayList<FreeDtoImpl> getList(PageInfo pi) {
 		ArrayList<FreeDtoImpl> result = new ArrayList<>(); // 반환할 객체 생성
-		String query = "SELECT * FROM FREE_BOARD fb" + "     JOIN MEMBER m ON m.M_NO = fb.M_NO"
+		String query = "SELECT * FROM FREE_BOARD fb" 
+				+ "     JOIN MEMBER m ON m.M_NO = fb.M_NO"
 				+ "     WHERE FB_DELETE_STATUS = 'N'"
-				+ "     ORDER BY fb_indate DESC" + "     OFFSET ? ROW FETCH FIRST ? ROW ONLY";
+				+ "     ORDER BY fb_indate DESC" 
+				+ "     OFFSET ? ROW FETCH FIRST ? ROW ONLY";
 
 		try {
 			// 1. 쿼리 사용할 준비

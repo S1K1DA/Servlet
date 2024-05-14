@@ -30,10 +30,10 @@ public class FreeDetailController extends HttpServlet {
 		
 		
 		// 필요한 정보: 제목, 내용, 작성일, 조회수, 작성자
-		
+		// 조회수 1증가 
 		result.setBoardViews(result.getBoardViews()+1);
 		
-		// 조회수 1증가 
+		
 		request.setAttribute("result", result);
 		
 		

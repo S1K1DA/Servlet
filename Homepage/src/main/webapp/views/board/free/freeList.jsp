@@ -86,7 +86,8 @@
 						<li class="page-item" style="margin-right: 0px"><a
 							class="page-link" href="#" aria-label="Previous"> <span
 								aria-hidden="true">&laquo;</span>
-						</a></li>
+						</a>
+						</li>
 					</c:when>
 
 					<c:otherwise>

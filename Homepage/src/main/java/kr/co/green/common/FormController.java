@@ -44,7 +44,7 @@ public class FormController extends HttpServlet {
 			
 		} else if (action.equals("/contactEnroll.do")) {
 			nextPage = "/views/contact/contact.jsp";
-		}
+		} 
 				
 				
 		if (nextPage != null && !nextPage.isEmpty()) {
