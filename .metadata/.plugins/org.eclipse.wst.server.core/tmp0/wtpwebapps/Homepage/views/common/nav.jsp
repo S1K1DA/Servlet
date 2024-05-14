@@ -12,6 +12,6 @@
 				<a href="news.html">뉴스 게시판</a> <a href="/freeBoard/list.do?cpage=1">자유
 					게시판</a>
 			</div></li>
-		<li><a href="contact.html">연락하기</a></li>
+		<li><a href="/form/contactEnroll.do">연락하기</a></li>
 	</ul>
 </nav>

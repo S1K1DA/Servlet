@@ -42,13 +42,16 @@ public class FormController extends HttpServlet {
 			request.setAttribute("result", result);
 			nextPage = "/views/board/free/freeEdit.jsp";
 			
-			
-			
+		} else if (action.equals("/contactEnroll.do")) {
+			nextPage = "/views/contact/contact.jsp";
 		}
-			
+				
+				
 		if (nextPage != null && !nextPage.isEmpty()) {
 			RequestDispatcher view = request.getRequestDispatcher(nextPage);
 			view.forward(request, response);
+		} else {
+			response.sendRedirect("/views/error.jsp");
 		}
 
 	}
