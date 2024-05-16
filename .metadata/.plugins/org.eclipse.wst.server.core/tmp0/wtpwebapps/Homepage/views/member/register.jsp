@@ -5,6 +5,7 @@
 <html>
 <head>
  	<%@ include file="/views/common/head.jsp" %>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <%@ include file="/views/common/header.jsp" %>	
@@ -24,7 +25,9 @@
 
         <div class="input-container">
             <label for="new-userid">아이디:</label>
-            <input type="text" id="new-userid" name="new-userid" required>
+            <input type="text" id="new-userid" name="new-userid" onkeyup="duplicateId()" required>
+            <span id="id-msg"></span>
+            
         </div>
           <div class="input-container">
             <label for="new-password">비밀번호:</label>
@@ -44,3 +47,38 @@
     <%@ include file="/views/common/footer.jsp" %>
 </body>
 </html>
+
+<script>
+	function duplicateId() {
+		const userId = document.getElementById("new-userid").value;
+		const idMsg = document.getElementById("id-msg");
+		
+		$.ajax({
+			type: "POST",   // HTTP 메서드
+			url: "/member/duplicateId.do",   // 요청할 URL
+			data: { userId : userId},  // 전송할 데이터 { 키 : 값 }
+			success: function(res) {   // 요청이 성공했을 때  
+				
+			},
+			error: function(err) {     // 요청이 실패했을 때
+				
+			}
+			
+		})
+		
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

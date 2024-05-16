@@ -24,6 +24,9 @@ public class ContactListController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8"); 
+		
 		ContactServiceImpl contactService = new ContactServiceImpl();
 		
 		int cpage = Integer.parseInt(request.getParameter("cpage"));

@@ -25,6 +25,7 @@ public class ContactEnrollController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8"); 
 		
 		// 이름, 이메일, 메세지
 		String name = request.getParameter("name");

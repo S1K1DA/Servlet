@@ -39,5 +39,4 @@ INDEX VERSION 1.131+C:\dev\work-space\Servlet\.metadata\.plugins\org.eclipse.jdt
 3512868268.index
 3426658495.index
 45664146.index
-622841373.index
 412160624.index
