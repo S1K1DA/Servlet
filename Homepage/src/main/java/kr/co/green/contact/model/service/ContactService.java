@@ -16,5 +16,12 @@ public interface ContactService {
 	public int getListCount();
 	
 	public ContactDto getDetail(int no);
+	
+	public ContactDto getAnswerForm(int no);
+	
+	public int setAnswer(ContactDto contactDto);
+	
+	public int Delete(int no);
+	
 
 }

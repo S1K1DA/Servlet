@@ -113,14 +113,104 @@ public class ContactDao {
 		
 		try {
 			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);		
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int cNo = rs.getInt("C_NO");
+				String cName = rs.getString("C_NAME");
+				String cMessage = rs.getString("C_MESSAGE");
+				String cEmail = rs.getString("C_EMAIL");
+				String cIndate = rs.getString("C_INDATE");
+				int mNo = rs.getInt("M_NO");
+				
+				ContactDto contactDto = new ContactDto();
+				contactDto.setNo(cNo);
+				contactDto.setName(cName);
+				contactDto.setMessage(cMessage);
+				contactDto.setEmail(cEmail);
+				contactDto.setIndate(cIndate);
+				contactDto.setMemberNo(mNo);
+				
+				return contactDto;
+			}
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// 여기하는중입니다 기억하세요  
+		return null;
+	}
+	
+	public int setAnswer(ContactDto contactDto) {
+		System.out.println(contactDto.getNo());
+		System.out.println(contactDto.getMemberNo());
+		String query = "INSERT INTO contact_answer VALUES(contact_answer_seq.nextval, ?, default, ?, ?)";
+		int result = 0;
 		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, contactDto.getAnswerContent());
+			pstmt.setInt(2, contactDto.getMemberNo());
+			pstmt.setInt(3, contactDto.getNo());
+			
+			result = pstmt.executeUpdate();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 
+	
+	public int setAnswerUpdate(int no) {
+		String query = "UPDATE contact set c_answer_status = 'Y' WHERE c_no = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			int result = pstmt.executeUpdate();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public int Delete(int no) {
+		String query = "DELETE FROM contact_answer WHERE c_no = ?";
+		int result = 0;
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			
+			result = pstmt.executeUpdate();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public int contactDelete(int no) {
+		String query = "DELETE FROM contact WHERE c_no = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			int result = pstmt.executeUpdate();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 	
 	

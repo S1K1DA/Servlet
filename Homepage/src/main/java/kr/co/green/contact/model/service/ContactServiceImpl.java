@@ -34,5 +34,32 @@ public class ContactServiceImpl implements ContactService {
 		return contactDao.getDetail(no);
 	}
 	
+	@Override
+	public ContactDto getAnswerForm(int no) {
+		ContactDto result = contactDao.getDetail(no);
+		
+		return result;
+	}
+	
+	@Override
+	public int setAnswer(ContactDto contactDto) {
+//		return contactDao.setAnswer(contactDto); 
+		
+		if(contactDao.setAnswer(contactDto) == 1) {
+			return contactDao.setAnswerUpdate(contactDto.getNo());
+			}
+		
+		return 0;
+	}
+	
+	@Override
+	public int Delete(int no) {
+		
+		if(contactDao.Delete(no) == 1) {
+			return contactDao.contactDelete(no);
+		}
+		return 0;
+	}
+	
 
 }

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.green.board.model.dto.FreeDtoImpl;
 import kr.co.green.board.model.service.FreeServiceImpl;
+import kr.co.green.contact.model.dto.ContactDto;
+import kr.co.green.contact.model.service.ContactServiceImpl;
 
 @WebServlet("/form/*")
 public class FormController extends HttpServlet {
@@ -44,7 +46,25 @@ public class FormController extends HttpServlet {
 			
 		} else if (action.equals("/contactEnroll.do")) {
 			nextPage = "/views/contact/contact.jsp";
-		} 
+		} else if (action.equals("/answerForm.do")) {
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			ContactServiceImpl contactService = new ContactServiceImpl();
+			ContactDto result = contactService.getAnswerForm(no);
+			
+			request.setAttribute("result", result);
+			nextPage = "/views/contact/contactAnswer.jsp";
+		}
+//			else if (action.equals("/deleteForm.do")) {
+//			int no = Integer.parseInt(request.getParameter("no"));
+//			
+//			ContactServiceImpl contactService = new ContactServiceImpl();
+//			ContactDto result = contactService.getAnswerForm(no);
+//			
+//			request.setAttribute("result", result);
+//			response.sendRedirect("/views/contact/contactList.jsp");
+//			nextPage = "/views/contact/contactList.jsp";
+//		}
 				
 				
 		if (nextPage != null && !nextPage.isEmpty()) {

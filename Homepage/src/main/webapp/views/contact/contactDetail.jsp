@@ -16,7 +16,6 @@
  <section class="container mt-4" style="height: 70vh">
     <div class="card text-center" style="height: 100%">
         
-        <form action="/contact/detail.do" method="POST">
     	<input type="hidden" name="no" value="${result.no}"/>
         
         <div class="card-header">
@@ -24,23 +23,26 @@
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-center mb-3">
-                <div class="mx-3">작성자: <span id="fb-writer">홍길동</span></div>
-                <div class="mx-3">이메일: <span id="fb-views">test@test.com</span></div>
-                <div class="mx-3">작성일: <span id="fb-date">2024-05-03</span></div>
+                <div class="mx-3">작성자: <span id="fb-writer">${result.name}</span></div>
+                <div class="mx-3">이메일: <span id="fb-views">${result.email}</span></div>
+                <div class="mx-3">작성일: <span id="fb-date">${result.indate}</span></div>
             </div>
             <hr> 
             <div style="margin-top:20px; margin-bottom: 20px;">
                 <p class="card-text">
-                    문의 내용
+                    ${result.message}
                 </p>
             </div>
         </div>
         <div class="card-footer d-flex justify-content-center">
             <button class="btn btn-secondary mx-2" onclick="window.history.back()">뒤로가기</button>
-            <button class="btn btn-primary mx-2">답변</button>
-            <button class="btn btn-danger mx-2">삭제</button>
-        </div>
+            <button type="button" class="btn btn-primary mx-2" onclick="location.href='/form/answerForm.do?no=${result.no}'">답변</button>
+          
+           <form action="/contact/delete.do" method="POST">
+    	<input type="hidden" name="no" value="${result.no}"/> 
+            <button type="submit" class="btn btn-danger mx-2">삭제</button>
         </form>
+        </div>
     </div>
 </section>
 
