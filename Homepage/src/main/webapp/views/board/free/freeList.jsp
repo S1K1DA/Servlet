@@ -21,16 +21,21 @@
 		<h1>자유 게시판</h1>
 		<hr>
 		<div class="input-group mb-3" style="width: 100%; margin-top: 40px">
+			
+			<form action="/freeBoard/list.do" method="GET">
+			<input type="hidden" name="cpage" value="1">
+			
 			<select class="form-select" id="inputGroupSelect02" name="category"
 				style="width: 100px; height: 46px; flex: 0 0 auto;">
-				<option value="category-title" selected>제목</option>
-				<option value="category-content">내용</option>
-				<option value="category-writer">작성자</option>
+				<option value="fb_title" selected>제목</option>
+				<option value="fb_content">내용</option>
+				<option value="m_name">작성자</option>
 			</select> <input type="text" style="width: 500px; flex: 0 0 auto;"
-				class="form-control" name="serach-text" placeholder="검색어를 입력해주세요."
+				class="form-control" name="search-text" placeholder="검색어를 입력해주세요."
 				aria-label="Recipient's username" aria-describedby="button-addon2">
-			<button class="btn btn-outline-secondary" type="button"
+			<button class="btn btn-outline-secondary" type="submit"
 				id="button-addon2" style="height: 46px;">검색</button>
+			</form>
 
 			<c:choose>
 				<c:when test="${sessionScope.userName != null}">

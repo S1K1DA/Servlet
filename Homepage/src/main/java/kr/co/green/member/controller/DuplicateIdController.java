@@ -1,11 +1,14 @@
 package kr.co.green.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import kr.co.green.member.model.service.MemberServiceImpl;
 
 @WebServlet("/member/duplicateId.do")
 public class DuplicateIdController extends HttpServlet {
@@ -24,8 +27,16 @@ public class DuplicateIdController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String id = request.getParameter("userId");
+		MemberServiceImpl memberService = new MemberServiceImpl();
+		int duplicateCheck = memberService.duplicateId(id);
 		
-		System.out.println("요청 왔음 : " + id);
+		if(duplicateCheck == 1) {  // 중복
+			response.getWriter().write("unavailable");
+		} else {   // 중복 X
+			response.getWriter().write("available");
+			
+		}
+		
 	}
 
 }

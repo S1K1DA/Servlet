@@ -20,5 +20,16 @@ public class MemberServiceImpl implements MemberService {
 	public Member login(Member member) {
 		return memberDAO.login(member);
 	}
+	
+	@Override
+	public int duplicateId(String id) {
+		return memberDAO.duplicateId(id);
+	}
+	
+	@Override
+	public Member getHashPassword(String id) {
+		return memberDAO.getHashPassword(id);
+	}
+
 }
 

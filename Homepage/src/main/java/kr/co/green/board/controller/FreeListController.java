@@ -30,9 +30,12 @@ public class FreeListController extends HttpServlet {
 		FreeServiceImpl freeService = new FreeServiceImpl();
 		// String 타입 cpage를 Int 타입으로 바꿔주기
 		int cpage = Integer.parseInt(request.getParameter("cpage"));
+		String category = request.getParameter("category");
+		String searchText = request.getParameter("search-text");
+		
 
 		// 전체 게시글 수
-		int listCount = freeService.getListCount();
+		int listCount = freeService.getListCount(category, searchText);
 
 		// 보여질 페이지 수
 		int pageLimit = 5;
@@ -43,7 +46,7 @@ public class FreeListController extends HttpServlet {
 		PageInfo pi = Pagination.getPageInfo(listCount, cpage, pageLimit, boardLimit);
 
 		// 게시글 목록 불러오기
-		ArrayList<FreeDtoImpl> list = freeService.getList(pi);
+		ArrayList<FreeDtoImpl> list = freeService.getList(pi, category, searchText);
 
 		// 게시글 번호 구하기
 		int row = listCount - (cpage - 1) * boardLimit;

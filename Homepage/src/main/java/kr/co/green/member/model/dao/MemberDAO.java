@@ -19,7 +19,7 @@ public class MemberDAO {
 	}
 	
 	public int register(Member member) {
-		String query = "INSERT INTO member VALUES(member_seq.nextval,?,?,?,default)";
+		String query = "INSERT INTO member VALUES(member_seq.nextval,?,?,?,default, default)";
 		int result = 0;
 		
 		try {    // 예외처리 필수
@@ -64,9 +64,63 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public int duplicateId(String id) {
+		String query = "SELECT count(*) AS cnt FROM member"
+				+ "     WHERE M_ID = ?";
 		
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int result = rs.getInt("CNT"); 
+				return result;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 		
 	}
+	
+	
+	
+	public Member getHashPassword(String id) {
+		String query = "SELECT m_no, m_name, m_pwd, m_type FROM member"
+				+ "     WHERE m_id = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int no = rs.getInt("M_NO");
+				String name = rs.getString("M_NAME");
+				String hashPassword = rs.getString("M_PWD");
+				String type = rs.getString("M_TYPE");
+				
+				Member result = new Member();
+				result.setUserNo(no);
+				result.setUserName(name);
+				result.setUserPwd(hashPassword);
+				result.setUserType(type);
+				
+				return result;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	
 	
 	

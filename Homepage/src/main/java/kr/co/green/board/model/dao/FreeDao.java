@@ -20,19 +20,22 @@ public class FreeDao {
 		con = dc.connDB();
 	}
 
-	public ArrayList<FreeDtoImpl> getList(PageInfo pi) {
+	public ArrayList<FreeDtoImpl> getList(PageInfo pi, String category, String searchText) {
 		ArrayList<FreeDtoImpl> result = new ArrayList<>(); // 반환할 객체 생성
 		String query = "SELECT * FROM FREE_BOARD fb" 
 				+ "     JOIN MEMBER m ON m.M_NO = fb.M_NO"
 				+ "     WHERE FB_DELETE_STATUS = 'N'"
+				+ "     AND " + category + " LIKE '%'||?||'%'"
 				+ "     ORDER BY fb_indate DESC" 
 				+ "     OFFSET ? ROW FETCH FIRST ? ROW ONLY";
 
 		try {
 			// 1. 쿼리 사용할 준비
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, pi.getOffset());
-			pstmt.setInt(2, pi.getBoardLimit());
+//			pstmt.setString(1, category);
+			pstmt.setString(1, searchText);
+			pstmt.setInt(2, pi.getOffset());
+			pstmt.setInt(3, pi.getBoardLimit());
 
 			// 2. 쿼리 실행
 			ResultSet rs = pstmt.executeQuery();
@@ -68,12 +71,18 @@ public class FreeDao {
 		return result;
 	}
 
-	public int getListCount() {
-		String query = "SELECT count(*) AS cnt FROM free_board"
-				+      " WHERE FB_DELETE_STATUS = 'N'";
+	public int getListCount(String category, String searchText) {
+		String query = "SELECT count(*) AS cnt FROM free_board fb"
+				+ "     JOIN member m ON fb.m_no = m.m_no"
+				+ "     WHERE FB_DELETE_STATUS = 'N'"
+				+ "     AND " + category + " LIKE '%'||?||'%'";
 
 		try {
 			pstmt = con.prepareStatement(query);
+//			pstmt.setString(1, category);
+			
+			pstmt.setString(1, searchText);
+			
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {

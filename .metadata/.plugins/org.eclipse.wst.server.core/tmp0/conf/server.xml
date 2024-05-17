@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\dev\work-space\Servlet\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Homepage" path="" reloadable="true" source="org.eclipse.jst.jee.server:Homepage"/><Context docBase="C:\dev\work-space\Servlet\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MyPage" path="/MyPage" reloadable="true" source="org.eclipse.jst.jee.server:MyPage"/></Host>
+      <Context docBase="C:\dev\work-space\Servlet\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Homepage" path="" reloadable="true" source="org.eclipse.jst.jee.server:Homepage"/><Context docBase="C:\dev\work-space\Servlet\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MyPage" path="/MyPage" reloadable="true" source="org.eclipse.jst.jee.server:MyPage"/><Context docBase="C:\dev\work-space\Servlet\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\TempProject" path="/TempProject" reloadable="true" source="org.eclipse.jst.jee.server:TempProject"/></Host>
     </Engine>
   </Service>
 </Server>

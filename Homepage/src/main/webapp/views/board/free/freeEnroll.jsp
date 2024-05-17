@@ -14,7 +14,7 @@
 
 	<section id="post-form">
 		<h2>새 글 작성</h2>
-		<form action="/freeBoard/enroll.do" method="POST">
+		<form action="/freeBoard/enroll.do" method="POST" enctype="multipart/form-data">
 <%-- 			<input type="hidden" name="memberNo" value="${sessionScope.userNo}"> --%>		
 			
 			<label for="title">제목:</label> 
@@ -25,6 +25,8 @@
 			
 			<label for="content">내용:</label>
 			<textarea id="content" name="content" rows="4" required></textarea>
+			
+			<input type="file" name="file">
 
 			<button type="submit">작성</button>
 		</form>

@@ -16,6 +16,8 @@
     <div class="signup-form">
         <h2>회원가입</h2>
         <form action="/member/register.do" method="POST">
+        <input type="hidden" id="duplicateCheck" name="duplicateCheck">
+        
           <div class="input-container">
         </div>
         <div class="input-container">
@@ -52,12 +54,24 @@
 	function duplicateId() {
 		const userId = document.getElementById("new-userid").value;
 		const idMsg = document.getElementById("id-msg");
+		const duplicateCheck = document.getElementById("duplicateCheck");
 		
+		// $로 시작하는건 제이쿼리라고 생각하기
 		$.ajax({
 			type: "POST",   // HTTP 메서드
 			url: "/member/duplicateId.do",   // 요청할 URL
 			data: { userId : userId},  // 전송할 데이터 { 키 : 값 }
 			success: function(res) {   // 요청이 성공했을 때  
+				console.log(res);
+			if(res === "available") {
+				duplicateCheck.value = "available";
+				idMsg.style.color = "green";
+				idMsg.innerHTML = "사용 가능한 아이디입니다.";
+			} else {
+				duplicateCheck.value = "unavailable";
+				idMsg.style.color = "red";
+				idMsg.innerHTML = "중복된 아이디입니다.";
+			}
 				
 			},
 			error: function(err) {     // 요청이 실패했을 때

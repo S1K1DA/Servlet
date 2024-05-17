@@ -9,7 +9,7 @@
 		<li><a href="portfolio.html">포트폴리오</a></li>
 		<li class="menu-item"><a href="#">게시판</a>
 			<div class="submenu">
-				<a href="news.html">뉴스 게시판</a> <a href="/freeBoard/list.do?cpage=1">자유
+				<a href="news.html">뉴스 게시판</a> <a href="/freeBoard/list.do?cpage=1&category=fb_title&search-text=">자유
 					게시판</a>
 			</div></li>
 		<li><a href="/form/contactEnroll.do">연락하기</a></li>

@@ -15,14 +15,14 @@ public class FreeServiceImpl implements BoardService{
 	
 	
 	@Override
-	public ArrayList<FreeDtoImpl> getList(PageInfo pi) {
-		return freeDao.getList(pi);
+	public ArrayList<FreeDtoImpl> getList(PageInfo pi, String category, String searchText) {
+		return freeDao.getList(pi, category, searchText);
 	}
 
 
 	@Override
-	public int getListCount() {
-		return freeDao.getListCount();
+	public int getListCount(String category, String searchText) {
+		return freeDao.getListCount(category, searchText);
 	}
 	
 	@Override

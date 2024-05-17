@@ -10,5 +10,9 @@ public interface MemberService {
 	public Member login(Member member);
 	
 	
-//	회원 수정
+//	중복 검사
+	public int duplicateId(String id);
+	
+//	암호화된 패스워드 가져오기
+	public Member getHashPassword(String id);
 }

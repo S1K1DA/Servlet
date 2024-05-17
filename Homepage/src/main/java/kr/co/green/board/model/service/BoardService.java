@@ -8,10 +8,10 @@ import kr.co.green.common.PageInfo;
 public interface BoardService {
 
 //  리스트 조회
-	public ArrayList<FreeDtoImpl> getList(PageInfo pi);
+	public ArrayList<FreeDtoImpl> getList(PageInfo pi, String category, String searchText);
 
 //  전체 게시글 수
-	public int getListCount();
+	public int getListCount(String category, String searchText);
 
 //	글등록
 	public int enroll(FreeDtoImpl freeDto);
