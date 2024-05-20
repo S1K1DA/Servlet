@@ -44,6 +44,8 @@ public class ContactEnrollController extends HttpServlet {
 		
 		if(result == 1) {
 			response.sendRedirect("/");
+		} else {
+			response.sendRedirect("/error.jsp");
 		}
 		
 		

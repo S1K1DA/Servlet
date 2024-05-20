@@ -236,8 +236,6 @@ public class FreeDao {
 			pstmt.setInt(1, boardNo);
 			
 			int result = pstmt.executeUpdate();
-			pstmt.close();
-			con.close();
 			
 			return result;
 			
@@ -311,6 +309,26 @@ public class FreeDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public int setFileDelete(int fileNo) {
+		String query = "DELETE FROM free_board_upload WHERE fbu_no = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, fileNo);
+			int result = pstmt.executeUpdate();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	
+	
+	
+	
 }
 
 

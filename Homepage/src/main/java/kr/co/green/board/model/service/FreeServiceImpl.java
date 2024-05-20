@@ -84,5 +84,10 @@ public class FreeServiceImpl implements BoardService{
 	public void getFileName(FreeDtoImpl result) {
 		freeDao.getFileName(result);
 	}
+	
+	@Override
+	public int setFileDelete(int fileNo) {
+		return freeDao.setFileDelete(fileNo);
+	}
 
 }

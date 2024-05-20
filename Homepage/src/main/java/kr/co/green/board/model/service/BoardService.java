@@ -35,5 +35,8 @@ public interface BoardService {
 	public int fileUpload(FreeDtoImpl freeDto);
 	
 	public void getFileName(FreeDtoImpl result);
+	
+	
+	public int setFileDelete(int fileNo);
 
 }

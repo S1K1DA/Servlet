@@ -21,6 +21,8 @@
     <div class="card text-center" style="height: 100%">
     	<form action="/freeBoard/delete.do" method="POST">
     	<input type="hidden" name="boardNo" value="${result.boardNo}"/>
+    	<input type="hidden" name="fileNo" value="${result.fileNo}"/>
+    	<input type="hidden" name="fileName" value="${result.fileName}"/>
     
         <div class="card-header">
             <h2 id="fb-title">${result.boardTitle}</h2>
