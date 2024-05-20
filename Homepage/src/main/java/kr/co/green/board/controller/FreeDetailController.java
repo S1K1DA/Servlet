@@ -28,6 +28,8 @@ public class FreeDetailController extends HttpServlet {
 		FreeServiceImpl freeService = new FreeServiceImpl();
 		FreeDtoImpl result = freeService.getDetail(boardNo);
 		
+		freeService.getFileName(result);
+		
 		
 		// 필요한 정보: 제목, 내용, 작성일, 조회수, 작성자
 		// 조회수 1증가 

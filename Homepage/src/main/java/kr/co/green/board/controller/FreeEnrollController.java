@@ -60,10 +60,22 @@ public class FreeEnrollController extends HttpServlet {
 		
 		String fileName = null;
 		
+		// 서비스 호출
+		FreeServiceImpl freeService = new FreeServiceImpl();
+		int result = freeService.enroll(freeDto);
+		// 등로된 게시글의 no 가져오기
+		FreeDtoImpl resultDto = freeService.selectNo(freeDto);
+		
+		
+		
 		for(Part part : parts) {
 			fileName = getFileName(part);
 			if(fileName != null) {
 				part.write(filePath + File.separator + fileName);
+				
+				freeDto.setFilePath(uploadDirectory);
+				freeDto.setFileName(fileName);
+				int resultUpload = freeService.fileUpload(freeDto);
 			}
 		}
 		
@@ -81,11 +93,11 @@ public class FreeEnrollController extends HttpServlet {
 		
 		
 		// 서비스 호출
-		FreeServiceImpl freeService = new FreeServiceImpl();
-		int result = freeService.enroll(freeDto);
+//		FreeServiceImpl freeService = new FreeServiceImpl();
+//		int result = freeService.enroll(freeDto);
 		
 		if(result == 1) {
-			response.sendRedirect("/freeBoard/list.do?cpage=1");
+			response.sendRedirect("/freeBoard/list.do?cpage=1&category=fb_title&search-text=");
 		}
 		
 		

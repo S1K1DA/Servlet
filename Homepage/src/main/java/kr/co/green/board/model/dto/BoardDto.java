@@ -11,6 +11,34 @@ public class BoardDto {
 	private char boardDeleteStatus;
 	private int memberNo; // 회원 번호
 	private String memberName; // 회원 이름
+	
+	private int fileNo;
+	private String filePath;
+	private String fileName;
+
+	public int getFileNo() {
+		return fileNo;
+	}
+
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
 	public int getBoardNo() {
 		return boardNo;

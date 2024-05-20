@@ -67,5 +67,22 @@ public class FreeServiceImpl implements BoardService{
 	public int setDelete(int boardNo) {
 		return freeDao.setDelete(boardNo);
 	}
+	
+	@Override
+	public FreeDtoImpl selectNo(FreeDtoImpl freeDto) {
+		
+		return freeDao.selectNo(freeDto);
+	}
+	
+	@Override
+	public int fileUpload(FreeDtoImpl freeDto) {
+		
+		return freeDao.fileUpload(freeDto);
+	}
+	
+	@Override
+	public void getFileName(FreeDtoImpl result) {
+		freeDao.getFileName(result);
+	}
 
 }

@@ -33,6 +33,8 @@
             </div>
             <hr> 
             <div style="margin-top:20px; margin-bottom: 20px;">
+            	<img src="/resources/uploads/freeBoard/${result.fileName}"
+            		 width="300px" height="300px">
                 <p class="card-text">
                     ${result.boardContent}
                 </p>

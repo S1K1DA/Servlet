@@ -107,8 +107,8 @@ public class FreeDao {
 			pstmt.setInt(3, freeDto.getMemberNo());
 			
 			result = pstmt.executeUpdate();
-			pstmt.close();
-			con.close();
+//			pstmt.close();
+//			con.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -247,7 +247,70 @@ public class FreeDao {
 		return 0;
 	}
 	
+	public FreeDtoImpl selectNo(FreeDtoImpl freeDto) {
+		String query = "SELECT fb_no FROM free_board"
+				+ "     WHERE fb_no = (SELECT MAX(fb_no) FROM free_board"
+				+ "                    WHERE m_no = ?)";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, freeDto.getMemberNo());
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int fNO = rs.getInt("FB_NO");
+				freeDto.setBoardNo(fNO);
+				return freeDto;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
+	public int fileUpload(FreeDtoImpl freeDto) {
+		String query = "INSERT INTO free_board_upload"
+					+  " VALUES(free_board_upload_seq.nextval, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, freeDto.getFilePath());
+			pstmt.setString(2, freeDto.getFileName());
+			pstmt.setInt(3, freeDto.getMemberNo());
+			pstmt.setInt(4, freeDto.getBoardNo());
+			
+			int result = pstmt.executeUpdate();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
+		return 0;
+	}
+	
+	public void getFileName(FreeDtoImpl result) {
+		String query = "SELECT fbu_no, fbu_name FROM free_board_upload"
+				+ "     WHERE fb_no = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, result.getBoardNo());
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int no = rs.getInt("FBU_NO");
+				String name = rs.getString("FBU_NAME");
+				
+				result.setFileNo(no);
+				result.setFileName(name);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 

@@ -28,5 +28,12 @@ public interface BoardService {
 	
 //	글삭제
 	public int setDelete(int boardNo);
+	
+
+	public FreeDtoImpl selectNo(FreeDtoImpl freeDto);
+	
+	public int fileUpload(FreeDtoImpl freeDto);
+	
+	public void getFileName(FreeDtoImpl result);
 
 }
